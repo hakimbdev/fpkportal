@@ -98,9 +98,6 @@ export default function Home() {
             </div>
           </div>
           <div className="flex space-x-4">
-            <Link href="/portal" className="hover:underline">
-              Student Portal
-            </Link>
             <Link href="/alumni" className="hover:underline">
               Alumni
             </Link>
@@ -147,9 +144,6 @@ export default function Home() {
               </Link>
               <Link href="/gallery" className="text-[#003366] font-medium hover:text-[#0056b3]">
                 Gallery
-              </Link>
-              <Link href="/research" className="text-[#003366] font-medium hover:text-[#0056b3]">
-                Research
               </Link>
               <Link href="/contact" className="text-[#003366] font-medium hover:text-[#0056b3]">
                 Contact
@@ -550,11 +544,6 @@ export default function Home() {
                 <li>
                   <Link href="/admissions" className="hover:text-[#ff7f00]">
                     Admissions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/research" className="hover:text-[#ff7f00]">
-                    Research
                   </Link>
                 </li>
                 <li>

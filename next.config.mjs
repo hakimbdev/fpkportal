@@ -21,6 +21,9 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  devServer: {
+    port: 3002,
+  },
 }
 
 mergeConfig(nextConfig, userConfig)
