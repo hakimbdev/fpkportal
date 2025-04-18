@@ -1,0 +1,9 @@
+# Netlify redirects file
+# Handle API routes
+/api/*  /.netlify/functions/api/:splat  200
+
+# Handle Next.js static files
+/_next/static/*  /static/:splat  200
+
+# SPA fallback - send all page requests to the index
+/*  /index.html  200 

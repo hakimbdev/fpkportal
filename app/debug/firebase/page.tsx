@@ -2,14 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { db, auth } from '@/lib/firebase';
-import { collection, addDoc, getDocs, Timestamp, DocumentData } from 'firebase/firestore';
+import { collection, addDoc, getDocs, Timestamp } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
+
+// Define a generic type for Firestore documents
+type FirestoreDoc = {
+  id: string;
+  [key: string]: any;
+};
 
 export default function FirebaseDebugPage() {
   const [testStatus, setTestStatus] = useState<string>('Idle');
   const [authStatus, setAuthStatus] = useState<string>('Not authenticated');
-  const [testData, setTestData] = useState<DocumentData[]>([]);
-  const [applications, setApplications] = useState<DocumentData[]>([]);
+  const [testData, setTestData] = useState<FirestoreDoc[]>([]);
+  const [applications, setApplications] = useState<FirestoreDoc[]>([]);
   const [error, setError] = useState<string | null>(null);
   
   // Test authentication
@@ -30,7 +36,7 @@ export default function FirebaseDebugPage() {
     setTestStatus('Testing read access...');
     try {
       const querySnapshot = await getDocs(collection(db, 'test'));
-      const docs: DocumentData[] = [];
+      const docs: FirestoreDoc[] = [];
       querySnapshot.forEach((doc) => {
         docs.push({ id: doc.id, ...doc.data() });
       });
@@ -69,7 +75,7 @@ export default function FirebaseDebugPage() {
     setTestStatus('Checking applications collection...');
     try {
       const querySnapshot = await getDocs(collection(db, 'applications'));
-      const docs: DocumentData[] = [];
+      const docs: FirestoreDoc[] = [];
       querySnapshot.forEach((doc) => {
         docs.push({ id: doc.id, ...doc.data() });
       });
